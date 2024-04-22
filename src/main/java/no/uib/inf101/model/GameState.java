@@ -5,4 +5,5 @@ public enum GameState {
   FROZEN,
   GAME_OVER,
   START_MENU,
+  WIN_SCREEN
 }

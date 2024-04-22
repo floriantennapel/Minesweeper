@@ -66,7 +66,7 @@ public class Model implements ControllableModel, ViewableModel {
     firstClick = false;
 
     if (getHiddenCells().size() == minesOnBoard) {
-      setGameState(GameState.START_MENU);
+      setGameState(GameState.WIN_SCREEN);
       resetGame();
     }
 

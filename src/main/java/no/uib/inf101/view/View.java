@@ -35,8 +35,9 @@ public class View extends JPanel {
 
     switch (model.getGameState()) {
       case ACTIVE, FROZEN -> paintActiveGame(g2);
-      case START_MENU -> paintStartMenu(g2);
-      case GAME_OVER -> paintGameOver(g2);
+      case START_MENU -> paintMenu(g2, "Minesweeper");
+      case GAME_OVER -> paintMenu(g2, "Game Over");
+      case WIN_SCREEN -> paintMenu(g2, "You Won!");
     }
   }
 
@@ -46,16 +47,10 @@ public class View extends JPanel {
     coverHiddenCells(g);
   }
 
-  private void paintStartMenu(Graphics2D g) {
+  private void paintMenu(Graphics2D g, String text) {
     g.setBackground(Color.LIGHT_GRAY);
-    g.setFont(new Font("Arial", Font.BOLD, 40));
-    Inf101Graphics.drawCenteredString(g, "Minesweeper", this.getWidth() / 2., this.getHeight() / 2.);
-  }
-
-  private void paintGameOver(Graphics2D g) {
-    g.setBackground(Color.LIGHT_GRAY);
-    g.setFont(new Font("Arial", Font.BOLD, 40));
-    Inf101Graphics.drawCenteredString(g, "Game Over", this.getWidth() / 2., this.getHeight() / 2.);
+    g.setFont(new Font(text, Font.BOLD, 40));
+    Inf101Graphics.drawCenteredString(g, text, this.getWidth() / 2., this.getHeight() / 2.);
   }
 
   private void drawBackgroundGrid(Graphics2D g) {

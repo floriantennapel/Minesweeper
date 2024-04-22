@@ -36,7 +36,8 @@ public class MouseController implements MouseListener, ActionListener {
     switch (model.getGameState()) {
       case FROZEN -> { return; }
       case ACTIVE -> activeGameController(mouseEvent);
-      case START_MENU, GAME_OVER -> menuController(mouseEvent);
+      case START_MENU -> model.setGameState(GameState.ACTIVE);
+      case GAME_OVER, WIN_SCREEN -> model.setGameState(GameState.START_MENU);
     }
 
     view.repaint();
@@ -61,12 +62,6 @@ public class MouseController implements MouseListener, ActionListener {
       }
     } else if (mouseEvent.getButton() == MouseEvent.BUTTON3) {
       model.flagCell(pos);
-    }
-  }
-
-  private void menuController(MouseEvent mouseEvent) {
-    if (mouseEvent.getButton() == MouseEvent.BUTTON1) {
-      model.setGameState(GameState.ACTIVE);
     }
   }
 
