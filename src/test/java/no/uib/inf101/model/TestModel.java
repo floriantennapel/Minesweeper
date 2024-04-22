@@ -23,6 +23,7 @@ public class TestModel {
     assertThrows(IllegalArgumentException.class, () -> new Model(0, 16, 5));
     assertThrows(IllegalArgumentException.class, () -> new Model(5, 5, 26));
     assertThrows(IllegalArgumentException.class, () -> new Model(14, 16, -4));
+    assertThrows(IllegalArgumentException.class, () -> new Model(20, 20, 400));
   }
 
   @Test
@@ -35,5 +36,14 @@ public class TestModel {
       CellPosition pos = new CellPosition(random.nextInt(16), random.nextInt(16));
       assertFalse(model.inspectCell(pos));
     }
+  }
+
+  @Test
+  void cannotInspectFlagged() {
+    Model model = new Model(5, 5, 10);
+    CellPosition pos = new CellPosition(3, 3);
+    model.flagCell(pos);
+    assertFalse(model.inspectCell(pos));
+    assertEquals(25, model.getHiddenCells().size());
   }
 }

@@ -12,8 +12,8 @@ public class Minefield extends Grid<IMinesweeperCell> {
   public Minefield(int rows, int cols, int numberOfMines) {
     super(rows, cols);
 
-    if (numberOfMines > rows * cols) {
-      throw new IllegalArgumentException("There cannot be more mines than cells on board");
+    if (numberOfMines >= rows * cols) {
+      throw new IllegalArgumentException("There cannot be more than, or equal number of mines to number of cells on board");
     }
     if (rows <= 0 || cols <= 0) {
       throw new IllegalArgumentException("rows/cols must be at least 1");

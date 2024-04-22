@@ -20,8 +20,8 @@ public class Model implements ControllableModel, ViewableModel {
     if (rows <= 0 || cols <= 0) {
       throw new IllegalArgumentException("rows and cols must be more than 0");
     }
-    if (minesOnBoard > rows * cols) {
-      throw new IllegalArgumentException("minesOnBoard cannot be more than number of grid cells");
+    if (minesOnBoard >= rows * cols) {
+      throw new IllegalArgumentException("minesOnBoard cannot be more than or equal to number of grid cells");
     }
     if (minesOnBoard < 0) {
       throw new IllegalArgumentException("minesOnBoard cannot be negative");
@@ -43,6 +43,10 @@ public class Model implements ControllableModel, ViewableModel {
       throw new IllegalArgumentException("invalid position");
     }
 
+    if (minefield.get(pos).isFlagged()) {
+      return false;
+    }
+
     // first click should always hit a blank cell
     if (firstClick) {
       while (minefield.get(pos).isMine() || minefield.get(pos).getAdjacencyCount() != 0) {
@@ -52,9 +56,7 @@ public class Model implements ControllableModel, ViewableModel {
 
     MinesweeperCell cell = (MinesweeperCell) minefield.get(pos);
 
-    if (cell.isFlagged()) {
-      return false;
-    } else if (cell.isMine()) {
+    if (cell.isMine()) {
       showAllMines();
       return true;
     } else if (cell.getAdjacencyCount() == 0) {
