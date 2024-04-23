@@ -24,7 +24,9 @@ public interface ControllableModel {
   void flagCell(CellPosition pos);
 
   /**
-   * Create a new minefield game instance
+   * Create a new minefield game
+   * <p/>
+   * A new minefield is generated and next click should be safe
    */
   void resetGame();
 

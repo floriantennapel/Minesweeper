@@ -17,14 +17,19 @@ public class View extends JPanel {
   private static final int RIDGE_WIDTH = 8;
   private final Model model;
 
-  public View(Model model) {
+  public View(Model model, int height) {
     if (model == null) {
       throw new IllegalArgumentException("model cannot be null");
     }
+    if (height <= 0) {
+      throw new IllegalArgumentException("height cannot be negative or 0");
+    }
 
     this.model = model;
+    GridDimension dimension = model.getDimension();
+    int width = dimension.rows() * height / dimension.rows();
 
-    setPreferredSize(new Dimension(600, 600));
+    setPreferredSize(new Dimension(width, height));
   }
 
   @Override

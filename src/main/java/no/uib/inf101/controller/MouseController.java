@@ -43,6 +43,7 @@ public class MouseController implements MouseListener, ActionListener {
     view.repaint();
   }
 
+  // called when timer instantiated by game-over ticks
   @Override
   public void actionPerformed(ActionEvent actionEvent) {
     model.setGameState(GameState.GAME_OVER);

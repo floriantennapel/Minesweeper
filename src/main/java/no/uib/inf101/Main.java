@@ -8,8 +8,10 @@ import javax.swing.*;
 
 public class Main {
   public static void main(String[] args) {
+    int screenHeight = 600; // tweaked to fit 1920x1080 on windows 150% scale
+
     Model model = new Model(16, 16, 40);
-    View view = new View(model);
+    View view = new View(model, screenHeight);
     new MouseController(model, view);
 
     JFrame frame = new JFrame("Minesweeper");

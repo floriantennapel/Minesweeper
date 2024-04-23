@@ -43,6 +43,7 @@ public class Model implements ControllableModel, ViewableModel {
       throw new IllegalArgumentException("invalid position");
     }
 
+    // flagged cells are protected from being inspected
     if (minefield.get(pos).isFlagged()) {
       return false;
     }
