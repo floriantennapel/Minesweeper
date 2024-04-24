@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class View extends JPanel {
-  private static final int RIDGE_WIDTH = 8;
+  private static final int RIDGE_WIDTH = 6;
   private final Model model;
 
   public View(Model model, int height) {
@@ -27,7 +27,7 @@ public class View extends JPanel {
 
     this.model = model;
     GridDimension dimension = model.getDimension();
-    int width = dimension.rows() * height / dimension.rows();
+    int width = dimension.cols() * height / dimension.rows();
 
     setPreferredSize(new Dimension(width, height));
   }
@@ -54,7 +54,7 @@ public class View extends JPanel {
 
   private void paintMenu(Graphics2D g, String text) {
     g.setBackground(Color.LIGHT_GRAY);
-    g.setFont(new Font(text, Font.BOLD, 40));
+    g.setFont(new Font(text, Font.BOLD, this.getWidth() / 12));
     Inf101Graphics.drawCenteredString(g, text, this.getWidth() / 2., this.getHeight() / 2.);
   }
 
@@ -71,7 +71,7 @@ public class View extends JPanel {
       g.drawLine(x, 0, x, height);
     }
     for (int row = 0; row < dimension.rows(); row++) {
-      int y = row * height / dimension.cols();
+      int y = row * height / dimension.rows();
       g.drawLine(0, y, width, y);
     }
   }
