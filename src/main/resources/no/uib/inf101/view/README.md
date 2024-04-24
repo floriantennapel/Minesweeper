@@ -1,1 +1,0 @@
-<h2>All images are drawn by me, copying screenshots of minesweeper on Windows XP<h2>
