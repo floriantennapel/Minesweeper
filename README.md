@@ -16,6 +16,9 @@ Jeg hadde blant annet ønsker om å la brukeren velge vanskelighetsgrad og legge
 ligger inntil hver rute i rutenettet. Når dette er gjort kan brukeren klikke på hver rute for å enten markere den med ett flagg (høyreklikk) eller se på ruten (venstreklikk).
 Hvis ruten er fri og ikke ligger inntil noen miner så gjøres et BFS (breadth-first search) for å vise alle ledige nærliggende celler. Dersom man klikker på en mine taper en spillet.
 Spillet er vunnet dersom en klarer å vise alle ruter som ikke har miner på seg.</p>
-
+</div>
+<br/>
+<div>
   <p>Bildene er tegnet av meg i Pixilart basert på bilder av Minesweeper på Windows XP</p>
+  <p>Fonten som er brukt er <a href="https://www.dafont.com/army-rust.font">"ARMY RUST"</a> av Jayde Garrow (Jaydefonts), under "free for personal use" lisens</p>
 </div>

@@ -15,7 +15,10 @@ import java.io.InputStream;
 
 public class View extends JPanel {
   private static final int RIDGE_WIDTH = 6;
+  private static final String FONT_FILE = "ARMY RUST.ttf";
+
   private final Model model;
+  private final Font font;
 
   public View(Model model, int height) {
     if (model == null) {
@@ -26,6 +29,7 @@ public class View extends JPanel {
     }
 
     this.model = model;
+    font = readFontFromFile();
     GridDimension dimension = model.getDimension();
     int width = dimension.cols() * height / dimension.rows();
 
@@ -54,7 +58,7 @@ public class View extends JPanel {
 
   private void paintMenu(Graphics2D g, String text) {
     g.setBackground(Color.LIGHT_GRAY);
-    g.setFont(new Font(text, Font.BOLD, this.getWidth() / 12));
+    g.setFont(font.deriveFont(this.getWidth() / 8f));
     Inf101Graphics.drawCenteredString(g, text, this.getWidth() / 2., this.getHeight() / 2.);
   }
 
@@ -125,6 +129,26 @@ public class View extends JPanel {
       } else if (gc.elem().getAdjacencyCount() > 0) {
         drawImage(g, posToPix.getBoundsForCell(gc.pos()), gc.elem().getAdjacencyCount() + ".png");
       }
+    }
+  }
+
+  private Font readFontFromFile() {
+    Font defaultFont = new Font("Times", Font.BOLD, 12);
+
+    try {
+      InputStream stream = View.class.getResourceAsStream(FONT_FILE);
+      if (stream == null) {
+        System.err.println("cannot read font from file, stream is null");
+        return defaultFont;
+      }
+
+      Font font = Font.createFont(Font.TRUETYPE_FONT, stream);
+      stream.close();
+
+      return font;
+    } catch (IOException | FontFormatException e) {
+      System.err.println("cannot read font from file");
+      return defaultFont;
     }
   }
 
