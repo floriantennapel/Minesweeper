@@ -1,6 +1,6 @@
 <h1>Semesteroppgave 2 i INF101</h1>
 
-<h3>Laget av Florian ten Napel (flnap0022) April - 2024</h3>
+<h3>Laget av Florian ten Napel April - 2024</h3>
 
 <img src="image.png" width="400" height="400" alt="image of minesweeper">
 
